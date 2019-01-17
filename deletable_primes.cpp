@@ -30,11 +30,23 @@
  }
 
  int get_ways(unsigned long p){
-   return 0;
+   int lenght = 0;
+   for(int i = 0; i < get_length(num); i++){
+
+   }
  }
 
- int get_length(unsigned long num){
-
+ int get_length(unsigned long number){
+   unsigned long temp = number;
+   unsigned long lenght = 0;
+   if(number < 10){
+     return 1;
+   }
+   while(temp != 0){
+     temp /= 10;
+     lenght++;
+   }
+   return lenght;
  }
 
  bool is_prime(unsigned long num){
