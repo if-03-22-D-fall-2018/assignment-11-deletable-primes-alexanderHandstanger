@@ -11,11 +11,22 @@
  * ----------------------------------------------------------
  */
 #include "deletable_primes.h"
+#include <math.h>
 
  unsigned long remove_digit(int index, unsigned long n){
+   unsigned long left_site = 0;
+   unsigned long right_site = 0;
+   unsigned long result = 0;
+
    if(index == 0){
      return num / 10;
    }
+
+   left_site = num / pow(10, i + 1);
+   right_site = num % (unsigned long) pow(10, i);
+   result = left_site * pow(10, i) + right_site;
+
+   return result;
  }
 
  int get_ways(unsigned long p){
