@@ -19,21 +19,30 @@
    unsigned long result = 0;
 
    if(index == 0){
-     return num / 10;
+     return n / 10;
    }
 
-   left_site = num / pow(10, i + 1);
-   right_site = num % (unsigned long) pow(10, i);
-   result = left_site * pow(10, i) + right_site;
+   left_site = n / pow(10, index + 1);
+   right_site = n % (unsigned long) pow(10, index);
+   result = left_site * pow(10, index) + right_site;
 
    return result;
  }
 
  int get_ways(unsigned long p){
    int lenght = 0;
-   for(int i = 0; i < get_length(num); i++){
-
+   for(int i = 0; i < get_length(p); i++){
+      if(get_length(p) == 1){
+        if(is_prime(p) == true){
+          return 1;
+        }
+        return 0;
+      }
+      else if(is_prime(remove_digit(i, p))){
+        lenght += get_ways(remove_digit(i, p));
+      }
    }
+   return lenght;
  }
 
  int get_length(unsigned long number){
@@ -50,6 +59,9 @@
  }
 
  bool is_prime(unsigned long num){
+   if(num == 1){
+     return false;
+   }
    unsigned long i = 2;
    unsigned long cloned_num = num;
    while(i <= sqrt(num)){
